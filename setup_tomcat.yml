@@ -1,0 +1,26 @@
+---
+- name: setup tomact
+  hosts: all
+  become: true
+  tasks:
+  - name: install java pacakge
+    apt: 
+      name: default-jre
+      state: present
+  - name: download the tomcat pacakge
+    get_url:
+      url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+      dest: /tmp/test
+  - name: unzip the pacakge
+    unarchive:
+      src: /tmp/test/apache-tomcat-9.0.65.tar.gz
+      dest: /tmp/test/
+      remote_src: yes
+  - name: add permission to start.sh file
+    file:
+      path: /tmp/test/apache-tomcat-9.0.65/bin/startup.sh
+      mode: 0777
+  - name: start tomcat service
+    shell: nohup ./startup.sh
+    args:
+      chdir: /tmp/test/apache-tomcat-9.0.65/bin/
