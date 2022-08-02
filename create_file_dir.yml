@@ -1,0 +1,12 @@
+---
+
+- name: this is creating file or dir 
+  hosts: all
+  become: true
+  tasks:
+  - name: creating file
+    file:
+      path: /tmp/test
+      state: directory
+  - name: creating new user
+    user: name=sasi

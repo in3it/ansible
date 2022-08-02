@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  tasks:
+  become: true
+   - name: install git 
+     apt:
+       name: git
+        state: installed 
