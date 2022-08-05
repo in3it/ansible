@@ -28,7 +28,7 @@
         state: started
         enabled: yes
 
-    - name: Create new databases with names 
+    - name: Create new databases with names emloyee db
       community:
         mysql:
           mysql_db:
