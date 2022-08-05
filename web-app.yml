@@ -4,7 +4,7 @@
   become: true
   tasks:
     - name: install required packages
-      apt: 
+      apt:
         name: "{{ item }}"
         state: present
       with_items:
@@ -15,7 +15,7 @@
         - python-pip
 
     - name: install mysql packages
-      apt: 
+      apt:
         name: "{{ item }}"
         state: present
       with_items:
@@ -27,9 +27,11 @@
         name: mysql
         state: started
         enabled: yes
-        
-    - name: creating mysql database
-      mysql_db: name= employee_db state= present
+
+    - name: Create new databases with names 
+      mysql_db:
+        name: employee_db
+        state: present
 
     - name: creating database user
       mysql_user:
