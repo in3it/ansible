@@ -29,11 +29,7 @@
         enabled: yes
 
     - name: Create new databases with names emloyee db
-      community:
-        mysql:
-          mysql_db:
-        name: employee_db
-        state: present
+      mysql_db: name= employee_db state= present
 
     - name: creating database user
       mysql_user:
